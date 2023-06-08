@@ -1,0 +1,10 @@
+---
+  - name: Update apt packages
+    hosts: rs
+    become: true
+
+    tasks:
+      - name: update packages
+        ansible.builtin.package:
+          name: "*"
+          state: latest

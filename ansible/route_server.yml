@@ -1,0 +1,4 @@
+---
+  - hosts: rs
+    roles:
+      - route_server

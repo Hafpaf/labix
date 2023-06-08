@@ -1,0 +1,10 @@
+---
+- name: Ping host
+  ping:
+  tags: ping
+
+- import_tasks: deploy.yml
+  tags: deploy
+- import_tasks: bird.yml
+  tags:
+    - bird
