@@ -1,0 +1,9 @@
+---
+- name: Copy enp1s0 interface file
+  copy:
+    dest: '/etc/network/interfaces.d/enp1s0'
+    src: enp1s0
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart networking

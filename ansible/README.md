@@ -1,19 +1,25 @@
 # Commands
 
 ```bash
+ansible-playbook route_server.yml --list-tags
 ansible-playbook route_server.yml -t <tag> 
 ```
 
 The following tags are available:
 
 ```bash
-ping   # testing ping connectivity
-deploy # deploy everything
-bird   # update bird configuration
+apt        # update & install required apt packages
+bird       # update bird configuration
+deploy     # run & deploy everything
+interfaces # update network interfaces
+never      # prevent tasks like rebooting except on deployment
+nftables   # update nftables
+reboot     # reboot target
+ping       # test ping connectivity
 ```
 
-Note: the bird configuration file is currently empty. All configuration files
-can be found in `./roles/route_server/files/`. This makes the playbook fail.
+Note: the bird configuration file is currently invalid. This makes the playbook
+fail. All configuration files can be found in `./roles/route_server/files/`. 
 
 # Architecture
 
@@ -26,5 +32,5 @@ The `ansible.cfg`-file contains default configuration options, such as running
 all as root and asking for the sudo password.
 
 The `route_server.yml` calls the `route_server` role. This in turn calls
-`main.yml` in the `./roles/route_server/tasks/` directory. This imports the
-deployment and bird configuration scripts.
+`main.yml` in the `./roles/route_server/tasks/` directory. This imports all the
+different plays for updating and deploying.

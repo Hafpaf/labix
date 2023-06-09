@@ -4,4 +4,16 @@ Pin-Priority: 900
 
 Package: *
 Pin: release a=testing
+Pin-Priority: 500
+
+Package: *
+Pin: release a=bullseye-backports
+Pin-Priority: 500
+
+Package: *
+Pin: release a=stable-updates
+Pin-Priority: 400
+
+Package: *
+Pin: release a=stable-security
 Pin-Priority: 400

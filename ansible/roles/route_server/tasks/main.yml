@@ -1,10 +1,28 @@
 ---
 - name: Ping host
   ping:
-  tags: ping
+  tags: 
+    - ping
 
-- import_tasks: deploy.yml
-  tags: deploy
-- import_tasks: bird.yml
+- import_tasks: interfaces.yml
   tags:
+    - interfaces
+    - deploy
+- import_tasks: apt.yml
+  tags:
+    - apt
+    - deploy
+- import_tasks: bird.yml
+  tags: 
     - bird
+    - deploy
+- import_tasks: nftables.yml
+  tags:
+    - nftables
+    - deploy
+- name: Reboot machine
+  reboot:
+  tags: 
+    - reboot
+    - deploy
+    - never

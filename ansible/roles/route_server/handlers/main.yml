@@ -1,0 +1,23 @@
+---
+- name: reconfigure bird
+  ignore_errors: true
+  command: 'birdc configure'
+
+- name: reload nftables
+  ignore_errors: true
+  command: 'nft -f /etc/nftables.conf'
+- name: reload nftables
+  ignore_errors: true
+  systemd:
+    name: 'nftables.service'
+    enabled: yes
+    masked: no
+    state: reloaded
+
+- name: restart networking
+  ignore_errors: true
+  systemd:
+    name: 'networking.service'
+    enabled: yes
+    masked: no
+    state: restarted

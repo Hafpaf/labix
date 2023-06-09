@@ -7,7 +7,7 @@
     group: root
     mode: 0644
     validate: '/usr/sbin/bird -p -c %s'
-  notify: reeconfigure bird
+  notify: reconfigure bird
 - name: Enable bird.service
   systemd:
     name: 'bird.service'
