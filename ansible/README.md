@@ -3,7 +3,11 @@
 ```bash
 ansible-playbook route_server.yml --list-tags
 ansible-playbook route_server.yml -t <tag> 
+ansible-playbook route_server.yml --check --diff
 ```
+
+The first lists all available tags, the second runs specified tags, and the last
+performs a dry run and prints expected diff. No changes are actually committed.
 
 The following tags are available:
 
