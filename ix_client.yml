@@ -3,6 +3,7 @@
 clients:
   - asn: 199750
     description: "Olivia Wenya"
+    speed: 1000 # Mbit/s
     ip:
       - "185.0.29.10"
       - "2001:7f8:149:1ab::19:9750:1"
@@ -16,6 +17,7 @@ clients:
 
   - asn: 198886
     description: "Daniel Brasholt"
+    speed: 1000
     ip:
       - "185.0.29.11"
       - "2001:7f8:149:1ab::19:8886:1"
@@ -29,6 +31,7 @@ clients:
 
   - asn: 211153
     description: "Emil Petersen"
+    speed: 1000
     ip:
       - "185.0.29.12"
       - "2001:7f8:149:1ab::21:1153:1"
