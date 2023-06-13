@@ -12,17 +12,43 @@ clients:
   #  - "2001:db:1:1::22"
   #  16bit_mapped_asn: 64512
 
-  - asn: 211153
-    description: "Emil Petersen"
-    16bit_mapped_asn: 64512
+  - asn: 199750
+    description: "Olivia Wenya"
+    16bit_mapped_asn: 64514
     ip:
-      - "185.0.29.2"
-      - "2001:7f8:149::2"
+      - "185.0.29.10"
+      - "2001:7f8:149:1ab::19:9750:1"
     cfg:
       gtsm: True
       filtering:
         irrdb:
-          as_sets: 
+          as_sets:
+            - RIPE::AS199750:AS-ALL
+
+  - asn: 198886
+    description: "Daniel Brasholt"
+    16bit_mapped_asn: 64513
+    ip:
+      - "185.0.29.11"
+      - "2001:7f8:149:1ab::19:8886:1"
+    cfg:
+      gtsm: True
+      filtering:
+        irrdb:
+          as_sets:
+            - RIPE::AS198886:AS-ALL
+
+  - asn: 211153
+    description: "Emil Petersen"
+    16bit_mapped_asn: 64512
+    ip:
+      - "185.0.29.12"
+      - "2001:7f8:149:1ab::21:1153:1"
+    cfg:
+      gtsm: True
+      filtering:
+        irrdb:
+          as_sets:
             - RIPE::AS211153:AS-ALL
         #rpki:
         #  reject_invalid: True
@@ -30,30 +56,3 @@ clients:
         #  action: "shutdown"
         #  peering_db:
         #    enabled: True
-
-  - asn: 198886
-    description: "Daniel Brasholt"
-    16bit_mapped_asn: 64513
-    ip:
-      - "185.0.29.3"
-      - "2001:7f8:149::3"
-    cfg:
-      gtsm: True
-      filtering:
-        irrdb:
-          as_sets: 
-            - RIPE::AS198886:AS-ALL
-
-  - asn: 199750
-    description: "Olivia Wenya"
-    16bit_mapped_asn: 64514
-    ip:
-      - "185.0.29.4"
-      - "2001:7f8:149::4"
-    cfg:
-      gtsm: True
-      filtering:
-        irrdb:
-          as_sets: 
-            - RIPE::AS199750:AS-ALL
-
