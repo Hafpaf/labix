@@ -14,7 +14,7 @@ clients:
           as_sets:
             - RIPE::AS199750:AS-ALL #Optionally prepend with IRRDB source, ex. RIPE
       16bit_mapped_asn: 64512 #RFC 6996 Private ASNs. Requried for 32-bit ASNs
-      mac: d8:3a:dd:18:2e:7f #MAC-adress for filtering and loopback prevention 
+     mac: d8:3a:dd:18:2e:7f #MAC-adress for filtering and loopback prevention 
 
   - asn: 198886
     description: "Daniel Brasholt"
