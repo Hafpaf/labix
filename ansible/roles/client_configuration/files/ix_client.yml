@@ -1,0 +1,45 @@
+# LabIX client list used for all member related things
+
+clients:
+  - asn: 199750
+    description: "Olivia Wenya"
+    speed: 1000 # Mbit/s
+    ip:
+      - "185.0.29.10"
+      - "2001:7f8:149:1ab::19:9750:1"
+    rs_peer: True
+    rs_config: # Used for arouteserver config. AS-Set is required when registering as Route Server client
+      filtering:
+        irrdb:
+          as_sets:
+            - RIPE::AS199750:AS-ALL #Optionally prepend with IRRDB source, ex. RIPE
+      16bit_mapped_asn: 64512 #RFC 6996 Private ASNs. Requried for 32-bit ASNs
+
+  - asn: 198886
+    description: "Daniel Brasholt"
+    speed: 1000
+    ip:
+      - "185.0.29.11"
+      - "2001:7f8:149:1ab::19:8886:1"
+    rs_peer: True
+    rs_config:
+      filtering:
+        irrdb:
+          as_sets:
+            - RIPE::AS198886:AS-ALL
+      16bit_mapped_asn: 64513
+
+  - asn: 211153
+    description: "Emil Petersen"
+    speed: 1000
+    ip:
+      - "185.0.29.12"
+      - "2001:7f8:149:1ab::21:1153:1"
+    rs_peer: True
+    rs_config:
+      filtering:
+        irrdb:
+          as_sets:
+            - RIPE::AS211153:AS-ALL
+      16bit_mapped_asn: 64514
+

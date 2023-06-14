@@ -1,9 +1,9 @@
 auto enp1s0
 
 # Labitat_v4
-iface enp1s0 inet static
-        address 185.38.175.89/26
-        gateway 185.38.175.65
+# iface enp1s0 inet static
+#         address 185.38.175.89/26
+#         gateway 185.38.175.65
 
 # Local_v4
 iface enp1s0:0 inet static
@@ -15,9 +15,9 @@ iface enp1s0:1 inet static
         address 185.0.29.1/24
 
 #Labitat_v6
-iface enp1s0 inet6 static
-        address 2a01:4262:1ab:20::89/64
-        gateway 2a01:4262:1ab:20::1
+# iface enp1s0 inet6 static
+#         address 2a01:4262:1ab:20::89/64
+#         gateway 2a01:4262:1ab:20::1
 
 #RS_v6
 iface enp1s0:1 inet6 static

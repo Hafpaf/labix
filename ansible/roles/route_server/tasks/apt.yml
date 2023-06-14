@@ -38,10 +38,5 @@
       - nftables
       - git
       - bgpq4
-    state: latest
-- name: Specific backport pacakges
-  apt:
-    default_release: bullseye-backports
-    name:
       - bird2
     state: latest

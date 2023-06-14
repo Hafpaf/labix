@@ -1,0 +1,17 @@
+---
+  - hosts: 127.0.0.1
+    gather_facts: False
+    pre_tasks:
+      - name: Hydrate templates
+        command: >
+          ./scripts/parse.py
+          ./roles/client_configuration/files/ix_client.yml
+          ./roles/client_configuration/templates
+          ./roles/client_configuration/files/
+        tags: always
+        register: output
+      - name: debug
+        debug:
+          var: output.stdout_lines
+    roles:
+      - client_configuration

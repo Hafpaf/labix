@@ -1,0 +1,36 @@
+{
+	"ixp_list": [
+		{
+			"shortname": "LabIX",
+			"name": "Labitat Internet Exchange",
+			"country": "DK",
+			"url": "https://ix.labitat.dk",
+			"peeringdb_id": 4193,
+			"ixf_id": 1,
+			"ixp_id": 1,
+			"support_email": "labix@labitat.dk",
+			"support_phone": "",
+			"support_contact_hours": "24/7",
+			"peering_policy_list": [
+				"open",
+				"selective",
+				"mandatory",
+				"closed"
+			],
+			"vlan": [
+				{
+					"id": 1,
+					"name": "LAN1",
+					"ipv4": {
+						"prefix": "185.0.29.0",
+						"mask_length": 24
+					},
+					"ipv6": {
+						"prefix": "2001:7f8:149:1ab::",
+						"mask_length": 64
+					}
+				}
+			]
+		}
+	]
+}

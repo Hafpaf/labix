@@ -1,0 +1,34 @@
+# members.md
+---
+#description: "Labitat Internet Exachange"
+paige:
+  style: |
+    #paige-collections,
+    #paige-sections,
+    #paige-date,
+    #paige-reading-time,
+    paige-menu,
+    #paige-pages {
+      display: none;
+    }
+    #paige-title {
+      font-size: 5em;
+    }
+    #paige_breadcumbs {
+      display: none;
+    }
+
+title: "Members"
+---
+
+Members present at [Labicolo](https://labitat.dk/wiki/Labicolo).
+
+{% raw %}{{<table "table table-striped table-bordered">}}{% endraw %}
+| AS | Member | Speed | IPv4 | IPv6 |
+| --- | --- | --- | --- | --- |
+{% for client in clients -%}
+| [{{ client.asn }}](https://as{{ client.asn }}.peeringdb.com/) | {{ client.description }} | {{ client.speed_string }} | {{ client.ipv4 }} | {{ client.ipv6 }} |
+{% endfor -%}
+{% raw -%}
+{{</table>}}
+{% endraw -%}

@@ -1,13 +1,40 @@
 # Commands
 
+## Client Configurations
+
+The playbook for creating configurations on client updates is available with the
+command
+
+```bash
+ansible-playbook client_config.yml
+```
+
+No tags are necessary.
+
+The playbook will check if ARouteServer has been initialised on the host machine
+under `~/arouteserver`. It will then copy the necessary configurations to that
+directory. These configurations have been created partially by hydrating jinja2
+templates from the `ix_client.yml` file.
+
+Afterwards, a virtual pip environment is initialised and requirements are
+installed. This environment is used to create `ixf.json` and `bird.conf`. The
+last part copies these back to the ansible directory. Note: this could be
+changed to instead copy the files back to the `route_server` role so they are
+instantly ready for deployment.
+
+A `members.md` file is also hydrated. Nothing is done with it. This should be
+used to deploy an update to the website, `ix.labitat.dk`.
+
+As a final note: `ansible.cfg` no longer asks for the sudo password and will
+thus fail. This can be fixed by either supplying the `-k` flag when running that
+playbook or by un-commenting the lines.
+
+## Route Server Deployment
+
 ```bash
 ansible-playbook route_server.yml --list-tags
 ansible-playbook route_server.yml -t <tag> 
-ansible-playbook route_server.yml --check --diff
 ```
-
-The first lists all available tags, the second runs specified tags, and the last
-performs a dry run and prints expected diff. No changes are actually committed.
 
 The following tags are available:
 

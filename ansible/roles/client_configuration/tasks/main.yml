@@ -1,0 +1,65 @@
+---
+- name: Check if ARouteServer has been initialised
+  stat:
+    path: ~/arouteserver/
+  register: ars_exists
+- name: Assert that ARouteServer is initialised
+  assert:
+    that: ars_exists.stat.exists
+    success_msg: ARouteServer seems to be correctly initialised
+    fail_msg: >
+      ARouteServer must be initialised with arouteserver setup. It should be 
+      installed in the default directory, ~/arouteserver.
+    quiet: true
+- name: Copy config to ~/arouteserver
+  copy:
+    dest: ~/arouteserver/{{ item }}
+    src: "{{ item }}"
+  with_items:
+    - clients.yml
+    - general.yml
+    - info.json
+    - arouteserver.yml
+
+- name: Install pip packages in virtualenv
+  pip:
+    requirements: "{{ '~/arouteserver/requirements.txt' | expanduser }}"
+    virtualenv: "{{ '~/arouteserver/venv' | expanduser }}"
+- name: Copy virtualenv wrapper environment
+  copy:
+    src: venv
+    dest: "{{ '~/arouteserver/venv/bin/venv' | expanduser }}"
+    mode: preserve
+- name: Activate virtualenv using wrapper
+  set_fact:
+    ansible_python_interpreter: "{{ '~/arouteserver/venv/bin/venv' | expanduser }}"
+
+- name: Build ixf file
+  shell: >
+    ./scripts/arouteserver ixf-member-export
+    --merge-file info.json
+    "LabIX"
+    1
+    --ixp-id 1
+    --vlan-id 1
+    > ixf.json
+  args:
+    chdir: "{{ '~/arouteserver' | expanduser }}"
+  environment:
+    PYTHONPATH: "{{ '~/arouteserver' | expanduser }}"
+- name: Build bird.conf
+  shell: >
+    ./scripts/arouteserver bird
+    --target-version 2.0.11
+    > bird.conf
+  args:
+    chdir: "{{ '~/arouteserver' | expanduser }}"
+  environment:
+    PYTHONPATH: "{{ '~/arouteserver' | expanduser }}"
+- name: Move files back to the ansible directory
+  copy:
+    src: "{{ ('~/arouteserver/'+item) | expanduser }}"
+    dest: roles/client_configuration/files/ixf.json
+  with_items:
+    - ixf.json
+    - bird.conf

@@ -1,0 +1,37 @@
+# clients.yml
+# Configuration for clients connecting to the Route Server
+#
+# Documentation https://arouteserver.readthedocs.io/en/latest/CONFIG.html
+# Example configuration: https://github.com/pierky/arouteserver/blob/master/config.d/clients.yml
+
+
+# This is the list of all the route server's clients.
+clients:
+  #- asn: 65551
+  #  ip:
+  #  - "192.0.2.22"
+  #  - "2001:db:1:1::22"
+  #  16bit_mapped_asn: 64512
+{% for c in clients %}
+  - asn: {{ c.asn }}
+    description: "{{ c.description }}"
+    16bit_mapped_asn: {{ c.rs_config["16bit_mapped_asn"] }}
+    ip:
+      {%- for ip in c.ip %}
+      - "{{ ip }}"
+      {%- endfor %}
+    cfg:
+      gtsm: True
+      filtering:
+        irrdb:
+          as_sets:
+            {%- for as_set in c.rs_config.filtering.irrdb.as_sets %}
+            - {{ as_set }}
+            {%- endfor %}
+{% endfor %}
+        #rpki:
+        #  reject_invalid: True
+        #max_prefix:
+        #  action: "shutdown"
+        #  peering_db:
+        #    enabled: True
