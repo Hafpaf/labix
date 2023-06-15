@@ -1,20 +1,23 @@
-# LabIX client list used for all member related things
+# LabIX client list used for for automating route server config,
+#   ix-f schema export, IRRDB AS-Set update and website member list
+# Visit here for route server information: https://ix.labitat.dk/#route-server
 
 clients:
   - asn: 199750
     description: "Olivia Wenya"
     speed: 1000 # Mbit/s
     ip:
-      - "185.0.29.10"
-      - "2001:7f8:149:1ab::19:9750:1"
-    mac: "d8:3a:dd:18:2e:7f" #MAC-adress for filtering and loopback prevention 
+      - "185.0.29.10" # Assign the next available IPv4 address yourself
+      - "2001:7f8:149:1ab::19:9750:1" # Assign an IPv6 address with the following format: 2001:7f8:149:1ab::<asn>:<asn>:<router-number>
+    mac: "d8:3a:dd:18:2e:7f" #MAC-address for filtering and loopback prevention
     rs_peer: True
-    rs_config: # Used for arouteserver config. AS-Set is required when registering as Route Server client
+    rs_config: # Used for arouteserver config and are compatible its configuration options.
       filtering:
         irrdb:
           as_sets:
-            - RIPE::AS199750:AS-ALL #Optionally prepend with IRRDB source, ex. RIPE
-      16bit_mapped_asn: 64512 #RFC 6996 Private ASNs. Requried for 32-bit ASNs
+            - RIPE::AS199750:AS-ALL #AS-Set is required when registering as Route Server client
+                                    #Optionally prepend with IRRDB source, ex. RIPE
+      16bit_mapped_asn: 64512 #RFC 6996 Private ASNs. Required for 32-bit ASNs
 
   - asn: 198886
     description: "Daniel Brasholt"
@@ -46,3 +49,17 @@ clients:
             - RIPE::AS211153:AS-ALL
       16bit_mapped_asn: 64514
 
+  - asn: 207727
+    description: "Asbjorn Sloth Tonnesen trading as a5n"
+    speed: 1000
+    ip:
+      - "185.0.29.13"
+      - "2001:7f8:149:1ab::20:7727:1"
+    mac: "00:0d:b9:49:d3:d8"
+    rs_peer: True
+    rs_config:
+      filtering:
+        irrdb:
+          as_sets:
+            - RIPE::AS-A5N
+      16bit_mapped_asn: 64515
