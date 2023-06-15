@@ -22,6 +22,7 @@ clients:
     ip:
       - "185.0.29.11"
       - "2001:7f8:149:1ab::19:8886:1"
+    mac: "dc:a6:32:2b:ae:a1"
     rs_peer: True
     rs_config:
       filtering:
