@@ -1,0 +1,6 @@
+# Interface enp1s0 called here
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
