@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+# This script parses information ix_clients.yml in the root of repository 
+# to extract info for further processing
 
 import yaml
 from jinja2 import Environment, FileSystemLoader
