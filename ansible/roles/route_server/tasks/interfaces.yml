@@ -7,3 +7,11 @@
     group: root
     mode: '0644'
   notify: restart networking
+- name: Copy interfaces file
+  copy:
+    dest: '/etc/network/interfaces'
+    src: interfaces
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart networking

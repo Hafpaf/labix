@@ -6,13 +6,6 @@
     owner: root
     group: root
     mode: '0644'
-- name: Copy apt sources preference
-  copy:
-    dest: '/etc/apt/preferences.d/sources_preference'
-    src: sources_preference
-    owner: root
-    group: root
-    mode: '0644'
 - name: Run apt update+upgrade
   apt:
     upgrade: yes
@@ -20,8 +13,8 @@
   register: apt_result
 - name: Log changed packages
   debug:
-    msg: |
-      '{% for line in apt_result.stdout_lines 
+    msg:
+      '{% for line in apt_result.stdout_lines
       if "newly installed" in line%}
       {{ line }}
       {% endfor %}'
@@ -34,7 +27,7 @@
       - python3-dev
       - python3-virtualenv
       - tmux
-      - htop 
+      - htop
       - nftables
       - git
       - bgpq4

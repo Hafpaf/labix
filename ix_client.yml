@@ -63,3 +63,34 @@ clients:
           as_sets:
             - RIPE::AS-A5N
       16bit_mapped_asn: 64515
+
+  - asn: 198275
+    description: "Thomas Flummer"
+    speed: 1000
+    ip:
+      - "185.0.29.14"
+      - "2001:7f8:149:1ab::19:8275:1"
+    mac: "00:1e:06:45:38:09" #ToDo
+    rs_peer: True
+    rs_config:
+      filtering:
+        irrdb:
+          as_sets:
+            - RIPE::AS198275:AS-ALL
+      16bit_mapped_asn: 64516
+
+  - asn: 198186
+    description: "Overkill Consulting ApS"
+    speed: 1000
+    ip:
+      - "185.0.29.15"
+      - "2001:7f8:149:1ab::19:8186:1"
+    mac: "00:1e:06:45:38:09" #ToDo
+    rs_peer: True
+    rs_config:
+      filtering:
+        irrdb:
+          as_sets:
+            - RIPE::AS198186:AS-PRIMARY
+      16bit_mapped_asn: 64517
+

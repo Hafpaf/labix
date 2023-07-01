@@ -1,2 +1,3 @@
 [rs]
-10.42.1.192 ansible_user=user
+# Note that this requires you to setup an ~/.ssh/config that proxyjumps via the peeringlan
+labix_rs ansible_user=user
